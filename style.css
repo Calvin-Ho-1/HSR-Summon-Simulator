@@ -22,6 +22,8 @@ button:hover {
   background-color: #666;
 }
 
+/* SUMMON SCREEN */
+
 .result-box {
   margin-top: 2rem;
   display: flex;
@@ -102,6 +104,8 @@ ul#history {
 .close-btn:hover {
   background: rgba(255, 0, 0, 0.7);
 }
+
+/* SUMMON BUTTONS */
 
 .summon-buttons {
   position: fixed;
