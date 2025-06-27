@@ -3,6 +3,10 @@ const multiSummonBtn = document.getElementById("multi-summon-btn")
 const resultBox = document.getElementById("result");
 const collectionBox = document.getElementById("collection");
 const historyList = document.getElementById("history");
+const bannerScreen = document.getElementById("banner-screen");
+const resultScreen = document.getElementById("result-screen");
+const itemScreen = document.getElementById("item-screen");
+
 
 const summonPool = [
   { name: "Trash Item", rarity: "3★", color: "#999", image: "trash-can.webp" },
@@ -10,7 +14,13 @@ const summonPool = [
   { name: "Pela", rarity: "4★", color: "#6cf", image: "pela.webp" },
   { name: "Lynx", rarity: "4★", color: "#6cf", image: "lynx.webp" },
   { name: "Castorice", rarity: "5★", color: "gold", image: "castorice.webp", rateUp: true },
-  { name: "Clara", rarity: "5★", color: "gold", image: "clara.webp", rateUp: false }
+  { name: "Clara", rarity: "5★", color: "gold", image: "clara.webp", rateUp: false },
+  { name: "Bronya", rarity: "5★", color: "gold", image: "bronya.webp", rateUp: false },
+  { name: "Yanqing", rarity: "5★", color: "gold", image: "yanqing.webp", rateUp: false },
+  { name: "Welt", rarity: "5★", color: "gold", image: "welt.webp", rateUp: false },
+  { name: "Himeko", rarity: "5★", color: "gold", image: "himeko.webp", rateUp: false },
+  { name: "Bailu", rarity: "5★", color: "gold", image: "bailu.webp", rateUp: false },
+  { name: "Gepard", rarity: "5★", color: "gold", image: "bailu.webp", rateUp: false },
 ];
 
 // Track state
@@ -100,15 +110,16 @@ function renderCollection() {
   }
 }
 
-// Display result
-function renderResult(char) {
-  resultBox.innerHTML = `
-    <img src="images/${char.image}" alt="${char.name}" />
-    <div style="color:${char.color};">${char.rarity} - ${char.name}</div>
-  `;
+function closeResults() {
+  resultScreen.style.display = "none";
+  bannerScreen.style.display = "block";
 }
 
+// On summon click
 singleSummonBtn.addEventListener("click", () => {
+  bannerScreen.style.display = "none";
+  resultScreen.style.display = "block";
+
   let resultsHTML = "";
 
   const rarity = getRarity();
@@ -116,10 +127,11 @@ singleSummonBtn.addEventListener("click", () => {
 
   addToCollection(char);
 
+    // History 
     const li = document.createElement("li");
     li.innerHTML = `<span style="color:${char.color}">${char.rarity} - ${char.name}</span>`;
     historyList.prepend(li);
-
+    
     resultsHTML += `
       <div class="summon-result r${rarity[0]}">
         <img src="images/${char.image}" alt="${char.name}" />
@@ -128,10 +140,13 @@ singleSummonBtn.addEventListener("click", () => {
     `;
 
     resultBox.innerHTML = resultsHTML;
-})
+});
 
-// On summon click
+// 10x Summon
 multiSummonBtn.addEventListener("click", () => {
+  bannerScreen.style.display = "none";
+  resultScreen.style.display = "block";
+  
   let resultsHTML = "";
 
   for (let i = 0; i < 10; i++) {
@@ -140,6 +155,7 @@ multiSummonBtn.addEventListener("click", () => {
 
     addToCollection(char);
 
+    
     const li = document.createElement("li");
     li.innerHTML = `<span style="color:${char.color}">${char.rarity} - ${char.name}</span>`;
     historyList.prepend(li);
@@ -159,3 +175,6 @@ multiSummonBtn.addEventListener("click", () => {
 
 // Load on page refresh
 renderCollection();
+
+
+

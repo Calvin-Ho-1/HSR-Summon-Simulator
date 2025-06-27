@@ -7,21 +7,62 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app">
+  <!-- Banner Screen -->
+  <div class="banner-screen" id="banner-screen">
     <h1>Summon Simulator</h1>
-    <button id="single-summon-btn">1x Summon</button>
-    <button id="multi-summon-btn">10x Summon</button>
 
+  <div class="summon-buttons">
+    <button class="custom-summon-btn" id="single-summon-btn">
+      <div class="left">
+      <img src="images/special-pass-icon.webp" alt="Pass" />
+      <span>x1</span>
+    </div>
+    <div class="divider"></div>
+    <div class="right">
+      Warp x1
+    </div>
+    </button>
+
+    <button class="custom-summon-btn" id="multi-summon-btn">
+    <div class="left">
+      <img src="images/special-pass-icon.webp" alt="Pass" />
+      <span>x10</span>
+    </div>
+    <div class="divider"></div>
+    <div class="right">
+      Warp x10
+    </div>
+  </button>
+    <!-- <button id="multi-summon-btn">10x Summon</button> -->
+
+  </div>
+
+    <h2>Your Collection</h2>
+    <div id="collection"></div>
+    <h2>History</h2>
+    <ul id="history"></ul>
+    <!-- <button id="item-button">Items </button> -->
+  </div>
+
+  <!-- Result Screen -->
+  <div class="result-screen" id="result-screen" style="display: none;">
+    <div class="close-btn" onclick="closeResults()">✕</div>
     <h2>Results</h2>
     <div id="result" class="result-box"></div>
 
+    
+  </div>
+
+  <!-- Items and History -->
+  <div class="item-screen" id="item-screen" style="display: none;">
+    <div class="close-btn" onclick="closeResults()">✕</div>
     <h2>Your Collection</h2>
     <div id="collection"></div>
 
     <h2>History</h2>
     <ul id="history"></ul>
   </div>
-
+  
   <script src="script.js"></script>
 </body>
 </html>
